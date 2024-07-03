@@ -1,6 +1,7 @@
 CROSS_COMPILE ?= riscv64-unknown-elf-
 
-AR                 = $(CROSS_COMPILE)ar
+AR         = $(CROSS_COMPILE)ar
+OBJDUMP := $(CROSS_COMPILE)objdump
 
 CCFLAGS             = -mcmodel=medany -ffunction-sections -fdata-sections -g 
 LDFLAGS            = -nostartfiles -nostdlib -nostdinc -static -lgcc \
@@ -37,6 +38,9 @@ CLEAN_LIST := $(TARGET) \
 			  $(DISTCLEAN_LIST)
 
 QEMU 		  ?= /home/user/develop/qemu/build/qemu-riscv64
+
+# -d: print logs, you can use qemu-riscv64 -d --help for more details
+# -D <filename>: write logs to file
 QEMU_PARAM    ?= -d in_asm,exec,cpu,strace -D $(LOG_PATH)/$(TARGET_NAME).log
 
 # default rule
@@ -79,6 +83,10 @@ distclean:
 .PHONY: all
 all: $(TARGET)
 
+.PHONY: dump
+dump: $(TARGET)
+	$(OBJDUMP) -d $(TARGET) > $(DBG_PATH)/$(TARGET_NAME).dump
+	
 .PHONY: run
 
 run: all makedir

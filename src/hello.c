@@ -10,12 +10,12 @@ static int test_brev(int value) {
   return result;
 }
 
-void main() {
-  int a = 0x12345678;
+int main() {
+  int origin = 0x12345678;
   int expected = 0x1E6A2C48; // 假设这是位反转后的结果
   int ret = 0;
 
-  ret = test_brev(a);
+  ret = test_brev(origin);
   printf("ret = %x\n", ret);
 
   if (ret == expected) {
