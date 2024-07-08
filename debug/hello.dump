@@ -87,8 +87,8 @@ Disassembly of section .text:
    10182:	123457b7          	lui	a5,0x12345
    10186:	67878793          	addi	a5,a5,1656 # 12345678 <__BSS_END__+0x12325c88>
    1018a:	fef42623          	sw	a5,-20(s0)
-   1018e:	1e6a37b7          	lui	a5,0x1e6a3
-   10192:	c4878793          	addi	a5,a5,-952 # 1e6a2c48 <__BSS_END__+0x1e683258>
+   1018e:	03cd47b7          	lui	a5,0x3cd4
+   10192:	58978793          	addi	a5,a5,1417 # 3cd4589 <__BSS_END__+0x3cb4b99>
    10196:	fef42423          	sw	a5,-24(s0)
    1019a:	fe042223          	sw	zero,-28(s0)
    1019e:	fec42783          	lw	a5,-20(s0)
